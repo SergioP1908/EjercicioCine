@@ -3,6 +3,8 @@ nombre
 dni
 */
 
+
+
 public class Espectador {
 
     private String nombre;
@@ -29,6 +31,7 @@ public class Espectador {
     public void setDni(String dni) {
         this.dni = dni;
     }
+
 
     
 
