@@ -14,11 +14,21 @@ public class Sala {
 
     private Espectador [][] butacas;
 
+    public Sala(int numero, String tituloPelicula, int filas, int columnas) {
+        this.numero = numero;
+        this.tituloPelicula = tituloPelicula;
+        this.butacas = new Espectador[filas][columnas];
+    }
+
+    
+
     public Sala(int numero, String tituloPelicula, Espectador[][] butacas) {
         this.numero = numero;
         this.tituloPelicula = tituloPelicula;
         this.butacas = butacas;
     }
+
+
 
     public int getNumero() {
         return numero;
