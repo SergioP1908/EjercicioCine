@@ -1,8 +1,7 @@
 public class Cine {
 
     private String nombre;
-
-    private Sala [] salas;
+    private Sala[] salas;
 
     public Cine(String nombre, Sala[] salas) {
         this.nombre = nombre;

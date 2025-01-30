@@ -14,13 +14,14 @@
 	+ Cuando todos los espectadores hayan comprado la entrada mostrar un resumen por cada sala del cine
  */
 
-import java.util.Scanner;
+
 
 public class EjecucionCine {
 
     
+    
 
-    public static void main(String[] args) {
+   /*  public static void main(String[] args) {
 
         Espectador [][] butacassala1 = new Espectador[3][3];
 
@@ -56,18 +57,13 @@ public class EjecucionCine {
 
         Cine cine = new Cine("Cine Ejemplo", salas);
 
-        Espectador espectador1 = new Espectador("Juan", "584323145F");
+       
+        
 
 
 
 
 
-
-        Espectador espectador2 = new Espectador("Ana", "523993145V");
- 
-        Espectador espectador3 = new Espectador("Lucia", "750347655D");
-         
-        Espectador [] espectadores = {espectador1,espectador2,espectador3};
  
         
         
@@ -75,11 +71,12 @@ public class EjecucionCine {
          System.out.println(espectador.getNombre());
          System.out.println(espectador.getDni());
          System.out.println("--------------------------");
-        }*/
+        }
 
 
        
 
+        
             
         Scanner scan2 = new Scanner(System.in);
     
@@ -117,7 +114,7 @@ public class EjecucionCine {
             System.out.println(); 
 
 
-            personas [fila-1][columna-1] = "\t"+espectador1.getNombre();
+            //personas [fila-1][columna-1] = "\t"+espectador1.getNombre();
 
             for (int i = 0; i < personas.length; i++) {
                 System.out.print("F "+(i+1));
@@ -141,40 +138,103 @@ public class EjecucionCine {
 
         }
 
-    for (Espectador espectador : espectadores) {
-        Scanner scan3 = new Scanner(System.in);
-    System.out.println("Espectador "+ espectador.getNombre()+" que pelicula quieres ver");
-    String texto = scan3.nextLine();
-    }
-    
-  
-        for(int i =0;i<espectadores.length;i++){
-            System.out.println(espectadores[i].getNombre());
-        }
+        
+        
+
+}*/
 
 
-}
+    /*public void peliculasCartelera(){
 
-public void peliculasCartelera(){
+            Sala sala1 = new Sala(1, "Interestelar", null);
 
-        Sala sala1 = new Sala(1, "Interestelar", null);
+            Sala sala2 = new Sala(2, "Mad Max", null);
+        
+            Sala sala3 = new Sala(3, "Joker", null);
 
-        Sala sala2 = new Sala(2, "Mad Max", null);
-    
-        Sala sala3 = new Sala(3, "Joker", null);
-
-        Sala [] salas = {sala1,sala2,sala3};
-
-        System.out.println("---------------------------------");
-        for (Sala sala : salas) {
-            System.out.println("SALA: "+sala.getNumero());
-            System.out.println("TITULO: "+sala.getTituloPelicula());
-            
+            Sala [] salas = {sala1,sala2,sala3};
 
             System.out.println("---------------------------------");
+            for (Sala sala : salas) {
+                System.out.println("SALA: "+sala.getNumero());
+                System.out.println("TITULO: "+sala.getTituloPelicula());
+                
+
+                System.out.println("---------------------------------");
+            }
+
+            
+        
+    }*/
+
+
+
+
+   
+  
+
+    public static void main(String[] args) {
+        EjecucionCine mainCine = new EjecucionCine();
+        mainCine.arrancarCine();
+    }
+
+    private Cine crearCine(){
+        Sala sala1 = new Sala(1, "Pelicula 1", 3, 3);
+        Sala sala2 = new Sala(2, "Pelicula 2", 2, 2);
+        Sala sala3 = new Sala(3, "Pelicula 3", 4, 4);
+        Sala[] salas = {sala1, sala2, sala3};
+
+        Cine cine = new Cine("Cine Ejemplo", salas);
+        return cine;
+    }
+
+    private Espectador[] creaEspectadores(){
+        Espectador espectador1 = new Espectador("Espectador 1", "12345678A");
+        Espectador espectador2 = new Espectador("Espectador 2", "23456789B");
+        Espectador espectador3 = new Espectador("Espectador 3", "34567890C");
+        Espectador[] espectadores = {espectador1, espectador2, espectador3};
+        
+        return espectadores;
+    }
+
+    private void arrancarCine(){
+        Cine cine = crearCine();
+        Espectador[] espectadores = creaEspectadores();
+        gestionEntradas(cine, espectadores);
+    }
+
+    private void gestionEntradas(Cine cine, Espectador[] espectadores){
+        //Recorremos todos los espectadores
+        for (Espectador espectador : espectadores) {
+            System.out.println("\nEl espectador "+espectador.getNombre() +" está comprando entradas");
+            mostrarCartelera(cine);
+            int numSala = 1;
+            int numEntradas = 1;
+            Sala salaSeleccionada = cine.getSalas()[numSala-1];
+            mostrarButacas(salaSeleccionada);
+        }
+    }
+
+
+    private void mostrarCartelera (Cine cine){
+        Sala [] salas = cine.getSalas();
+        for (Sala sala : salas) {
+            System.out.println(sala);
+        }
+    }
+
+    private void mostrarButacas (Sala sala){
+        Espectador[][] butacas = sala.getButacas();
+        System.out.println("Butacas disponibles para la película "+sala.getTituloPelicula());
+        for (int idx = 0; idx < butacas.length; idx++) {//filas
+            for (int i = 0; i < butacas[idx].length; i++) {//columnas
+                System.out.print("\tO");        
+            }
+            System.out.println("");
         }
 
-        
-      
     }
+
+
+    
 }

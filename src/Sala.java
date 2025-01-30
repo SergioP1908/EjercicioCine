@@ -9,10 +9,8 @@
 public class Sala {
 
     private int numero;
-
     private String tituloPelicula;
-
-    private Espectador [][] butacas;
+    private Espectador[][] butacas;
 
     public Sala(int numero, String tituloPelicula, int filas, int columnas) {
         this.numero = numero;
@@ -20,15 +18,11 @@ public class Sala {
         this.butacas = new Espectador[filas][columnas];
     }
 
-    
-
     public Sala(int numero, String tituloPelicula, Espectador[][] butacas) {
         this.numero = numero;
         this.tituloPelicula = tituloPelicula;
         this.butacas = butacas;
     }
-
-
 
     public int getNumero() {
         return numero;
@@ -46,14 +40,22 @@ public class Sala {
         this.tituloPelicula = tituloPelicula;
     }
 
-    public Espectador [][] getButacas() {
+    public Espectador[][] getButacas() {
         return butacas;
     }
 
-    public void setButacas(Espectador [][] butacas) {
+    public void setButacas(Espectador[][] butacas) {
         this.butacas = butacas;
     }
 
-    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Sala ");
+        sb.append("").append(numero);
+        sb.append(", tituloPelicula=").append(tituloPelicula);
+        sb.append("");
+        return sb.toString();
+    }
 
 }
